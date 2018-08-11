@@ -1,4 +1,4 @@
-Node packages that need to by installed for server to work:
+Node packages that need to be installed for server to work:
 
 express
 body-parser
