@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="361page.html">SCHOOL DASHBOARD</a></li>
+    <li style="float:right"><a class="menu">Log In</a></li>
+  </ul>
+
+  <div class="sidenav">
+    <!--<a href="361page.html">Home</a> -->
+	<form method="get" action="/home">
+		<button>Home</button>
+	</form>
+	<form method="get" action="/cameras">
+		<button>Camera Feeds</button>
+	</form>
+	<form method="get" action="/gunners">
+		<button>Gunner Logs</button>
+	</form>
+	<form method="get" action="/events">
+		<button>Event Logs</button>
+	</form>
+    <!--<a href="cameraFeeds.html">Camera Feeds</a>
+    <a href="gunnerLogs.html">Gunner Log</a>
+    <a href="eventLogs.html">Event Log</a>-->
+  </div>
+
+<br>
+<div id="manualreport">
+  <h3> Generate Incident Report</h3>
+  <form id="addEvent" action="/addEvent" method="post">
+    SafeZone Name: <br><input type="text" name="safezone"><br>
+    Message: <br><input type="text" name="message"><br>
+	Priority: <br>
+	<select name="priority">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+  <br>
+  <br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</script>
+
+</body>
+</html>
