@@ -59,6 +59,10 @@ app.get('/manualGunner.html', function(req, res) {
 	res.sendFile(path.join(__dirname + '/manualGunner.html'));
 });
 
+app.get('/361page.html', function(req, res) {
+	res.sendFile(path.join(__dirname + '/361page.html'));
+});
+
 app.get('/manualEvent.html', function(req, res) {
 	res.sendFile(path.join(__dirname + '/manualEvent.html'));
 });
@@ -75,7 +79,7 @@ app.post('/addEvent', function(req, res) {
 	console.log("post received: %s %s", safezone, priority);
 
 	db.query("SELECT * FROM SafeZone S JOIN Authorities A ON S.Authority = A.Name WHERE S.Name = \"" + safezone  + "\"", function (error, results, fields) {
-		if (error) { 
+		if (error) {
 			throw error;
 			return;
 		}
@@ -148,4 +152,3 @@ function formatDate(date) {
 }
 
 app.listen(55556);
-
