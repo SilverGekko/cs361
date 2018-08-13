@@ -46,7 +46,7 @@ app.get('/home', function(req, res) {
      });
 
 app.get('/gunners', function(req, res) {
-	/*db.query("SELECT * FROM Gunners", function (error, results, fields) {
+	db.query("SELECT * FROM Gunners", function (error, results, fields) {
 		if (error) {
 			throw error;
 			return;
@@ -56,7 +56,8 @@ app.get('/gunners', function(req, res) {
 			table += '<tr><td>' + results[i].GunnerID + '</td><td>' + results[i].RegisteredGuns + '</td><td>' + results[i].Name + '</td><tr>';
 		}
 		table = '<tr><th>Gunner ID</th><th>RegisteredGuns</th><th>Name</th></tr>' + table;	
-	});*/
+		console.log("Get Gunnerlog:\n" + table);
+	});
 	res.sendFile(path.join(__dirname + '/gunnerLogs.html'));
 });
 
@@ -65,6 +66,18 @@ app.get('/cameras', function(req, res) {
 });
 
 app.get('/events', function(req, res) {
+	db.query("SELECT * FROM Gunners", function (error, results, fields) {
+		if (error) {
+			throw error;
+			return;
+		}
+		var table = '';
+		for(var i=0; i < results.length; i++){
+			table += '<tr><td>' + results[i].ReportID + '</td><td>' + results[i].SafeZone + '</td><td>' + results[i].Date + '</td><td>' +  results[i].Description + '</td><tr>';
+		}
+		table = '<tr><th>Report ID</th><th>SafeZone</th><th>Date</th><th>Description</th></tr>' + table;	
+		console.log("Get EventLog:\n" + table);
+	});
 	res.sendFile(path.join(__dirname + '/eventLogs.html'));
 });
 
