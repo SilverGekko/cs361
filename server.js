@@ -31,6 +31,8 @@ db.connect(function(err) {
 
 //this lets css work
 app.use(express.static(path.join(__dirname, "/public")));
+//express images
+app.use(express.static(path.join(__dirname, "/images")));
 
 app.use(bodyParser.json() );
 
@@ -44,6 +46,17 @@ app.get('/home', function(req, res) {
      });
 
 app.get('/gunners', function(req, res) {
+	/*db.query("SELECT * FROM Gunners", function (error, results, fields) {
+		if (error) {
+			throw error;
+			return;
+		}
+		var table = '';
+		for(var i=0; i < results.length; i++){
+			table += '<tr><td>' + results[i].GunnerID + '</td><td>' + results[i].RegisteredGuns + '</td><td>' + results[i].Name + '</td><tr>';
+		}
+		table = '<tr><th>Gunner ID</th><th>RegisteredGuns</th><th>Name</th></tr>' + table;	
+	});*/
 	res.sendFile(path.join(__dirname + '/gunnerLogs.html'));
 });
 
