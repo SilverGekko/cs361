@@ -43,23 +43,17 @@ for k=1:numel(files)
     % find bounding boxes
     bbox = step(detector,Images{k});
 	
-	% if gun is detected, call emergency alert stub
-	if size(bbox,1) > 0
-		sendEmergencyAlert();
-	end
-		
-  
     % Display result
-    figure(k),clf
-    imshow(Images{k})
-    hold off
+    % figure(k),clf
+    % imshow(Images{k})
+    % hold off
       
     %display bouding boxes
-    for j = 1:size(bbox,1)
-    rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
-    end
+    % for j = 1:size(bbox,1)
+    %     rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
+    % end
     
     % Save output files
-    outFilename = sprintf('%s_%d.jpg','out_image',k)   ; 
+    outFilename = sprintf('%s_%d.jpg','out_image',k); 
     saveas(figure(k), outFilename);
 end
