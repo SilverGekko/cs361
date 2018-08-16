@@ -1,13 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
+
+    <ul class="menu">
+        <li>
+            <a href="361page.html">SCHOOL DASHBOARD</a>
+        </li>
+        <li style="float:right">
+            <a class="menu">Log In</a>
+        </li>
+    </ul>
+
+    <div class="sidenav">
+        <!--<a href="361page.html">Home</a> -->
+        <form method="get" action="/home">
+            <button>Home</button>
+        </form>
+        <form method="get" action="/cameras">
+            <button>Camera Feeds</button>
+        </form>
+        <form method="get" action="/gunners">
+            <button>Gunner Logs</button>
+        </form>
+        <form method="get" action="/events">
+            <button>Event Logs</button>
+        </form>
+        <!--<a href="cameraFeeds.html">Camera Feeds</a>
+    <a href="gunnerLogs.html">Gunner Log</a>
+    <a href="eventLogs.html">Event Log</a>-->
+    </div>
+
     {{{body}}}
+
+    <div class="background"></div>
+
 </body>
 
 </html>
