@@ -49,9 +49,9 @@ for k=1:numel(files)
     % hold off
       
     %display bouding boxes
-    % for j = 1:size(bbox,1)
-    %     rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
-    % end
+    for j = 1:size(bbox,1)
+        rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
+    end
     
     % Save output files
     outFilename = sprintf('%s_%d.jpg','out_image',k); 
