@@ -1,0 +1,20 @@
+<h3>
+  Incidents Recorded:</h3>
+<table>
+  <thead>
+    <th>SafeZone</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Priority</th>
+  </thead>
+  <tbody>
+    {{#each incident}}
+    <tr>
+      <td>{{SafeZone}}</td>
+      <td>{{Date}}</td>
+      <td>{{Description}}</td>
+      <td>{{Priority}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
