@@ -55,11 +55,8 @@ app.get('/home', function (req, res) {
 app.get('/gunners', function (req, res) {
 	var context = {};
 
-	console.log("making query");
-
 	pool.query('SELECT * FROM Gunners', function (error, results, fields) {
 		if (error) {
-			console.log("in error case");
 			next(error);
 			return;
 		}
@@ -67,8 +64,6 @@ app.get('/gunners', function (req, res) {
 		context.guns = results;
 		res.render('gunnerLogs', context);
 	});
-
-	//res.sendFile(path.join(__dirname + '/gunnerLogs.html'));
 });
 
 app.get('/cameras', function (req, res) {
@@ -76,19 +71,16 @@ app.get('/cameras', function (req, res) {
 });
 
 app.get('/events', function (req, res) {
-	pool.query("SELECT * FROM Gunners", function (error, results, fields) {
+	var context = {};
+
+	pool.query('SELECT * FROM IncidentReport', function (error, results, fields) {
 		if (error) {
-			throw error;
+			next(error);
 			return;
 		}
-		var table = '';
-		for (var i = 0; i < results.length; i++) {
-			table += '<tr><td>' + results[i].ReportID + '</td><td>' + results[i].SafeZone + '</td><td>' + results[i].Date + '</td><td>' + results[i].Description + '</td><tr>';
-		}
-		table = '<tr><th>Report ID</th><th>SafeZone</th><th>Date</th><th>Description</th></tr>' + table;
-		console.log("Get EventLog:\n" + table);
+		context.incident = results;
+		res.render('eventLogs', context);
 	});
-	res.sendFile(path.join(__dirname + '/eventLogs.html'));
 });
 
 app.get('/manualGunner.html', function (req, res) {
