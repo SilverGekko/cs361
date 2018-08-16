@@ -7,7 +7,7 @@
 
 
 % Now load the training data for positives
-load roi_guns.mat
+% load roi_guns.mat
 
 
 % Specify negative images dir
