@@ -12,6 +12,10 @@ jsdom
 
 node-jsdom
 
+node-handlebars
+
+request
+
 npm install [plugin name] to install the plugins
 
 node server.js to run the server
