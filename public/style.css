@@ -171,3 +171,29 @@ div.generate {
 	height: 100%;
 	width: 100%;
 }
+
+table{
+	width: 400%;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+th {
+    height: 50px;
+	border: 1px solid black;
+}
+
+tr, td{
+	border: 1px solid black;
+}
+
+.cams{
+	position: absolute;
+	display: table;
+	width: 80%;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	top: 180px;
+	left:140px;	
+}

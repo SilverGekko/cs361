@@ -39,8 +39,6 @@ var transporter = nodemailer.createTransport({
 
 //this lets css work
 app.use(express.static(path.join(__dirname, "/public")));
-//express images
-app.use(express.static(path.join(__dirname, "/images")));
 
 
 // viewed at http://localhost:55556
@@ -52,7 +50,7 @@ app.get('/home', function (req, res) {
 	res.sendFile(path.join(__dirname + '/361page.html'));
 });
 
-app.get('/gunners', function (req, res, next) {
+app.get('/gunners', function (req, res,next) {
 	var context = {};
 
 	pool.query('SELECT * FROM Gunners', function (error, results, fields) {
@@ -67,10 +65,16 @@ app.get('/gunners', function (req, res, next) {
 });
 
 app.get('/cameras', function (req, res) {
+	//express images
+	app.use(express.static(path.join(__dirname, "/images/")));
+	res.sendFile(path.join(__dirname + '/cameras.html'));
+});
+
+app.get('/camerafeeds', function (req, res) {
 	res.sendFile(path.join(__dirname + '/cameraFeeds.html'));
 });
 
-app.get('/events', function (req, res) {
+app.get('/events', function (req, res, next) {
 	var context = {};
 
 	pool.query('SELECT * FROM IncidentReport', function (error, results, fields) {

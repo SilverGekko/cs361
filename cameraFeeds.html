@@ -1,8 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
+
+<script>
+	var loc;
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			vars[key] = value;
+		});
+		return vars;
+	}
+
+	window.onload = function(){
+		loc = getUrlVars()['loc'];
+		document.getElementById("main").src = "./" + loc + "/camera1.png";
+		document.getElementById("one").src = "./" + loc + "/camera1.png";
+		document.getElementById("two").src = "./" + loc + "/camera2.png";
+		document.getElementById("three").src = "./" + loc + "/camera3.png";
+	}
+	
+	function change_cams(cam){
+		document.getElementById("main").src = "./" + loc + "/camera" + cam + ".png";
+	}
+</script>
+
 <body>
   <ul class="menu">
     <li><a href="361page.html">SCHOOL DASHBOARD</a></li>
@@ -40,22 +64,22 @@
   </div>
   
 <div class="camText2">
-Back to the Area Map
+<a href = "/cameras"><button>Back to the Area Map</button></a>
 </div>
+
+
 
 <div class = "cameras">
 	<div class = "maincamera">
-		<img src = "./camera1.png" alt = "Camera Feeds" class = "mainimages">
+		<img src = "#" alt = "Camera Feeds" class = "mainimages" id = "main">
 	</div>
 
 	<div class = "sidecamera">
-		<img src = "./camera1.png" alt = "Camera Feeds" class = "sideimages">
-		<img src = "./camera2.png" alt = "Camera Feeds" class = "sideimages">
-		<img src = "./camera3.png" alt = "Camera Feeds" class = "sideimages">
+		<img src = "#" alt = "Camera Feeds" class = "sideimages" id = "one" onclick = change_cams(1)>
+		<img src = "#" alt = "Camera Feeds" class = "sideimages" id = "two" onclick = change_cams(2)>
+		<img src = "#" alt = "Camera Feeds" class = "sideimages" id = "three" onclick = change_cams(3)>
 	</div>
 </div>
-
-</script>
 
 </body>
 </html>
