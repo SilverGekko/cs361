@@ -1,0 +1,188 @@
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+li.menubar {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li.test a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+div button {
+    display: block;
+    color: black;
+    padding: 8px 16px;
+	min-width: 100px;
+	margin: 10px;
+    text-decoration: none;
+	align-text: center;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: grey;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: grey;
+    color: white;
+}
+
+div.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 10;
+    padding-top: 70px;
+}
+
+a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+div.camText1{
+    position: absolute;
+    top: 90px;
+    left: 150px;
+    width: 200px;
+    height: 620px;
+    font-size: 15px;
+
+}
+
+div.camText2{
+  position: absolute;
+    top: 90px;
+    right: 30px;
+    font-size: 15px;
+}
+
+div.gunnerInput {
+  position: absolute;
+  top: 90px;
+  left: 150px;
+  width: 200px;
+  height: 620px;
+  font-size: 15px;
+}
+
+div.generate {
+  position: absolute;
+  text-align: center;
+  line-height: 0px;
+  top: 80px;
+  left:120px;
+  width: 400px;
+  height: 25px;
+  border: 40px;
+  font-size: 15px;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+#manualreport {
+	position: absolute;
+	left: 140px;
+}
+
+.cameras {
+	position: absolute;
+	display: table;
+	width: 80%;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	top: 180px;
+	left:140px;
+}
+
+.maincamera {
+	position: inherit;
+	display: table-cell;
+	padding: 4px;
+	margin-left: 40px;
+    width: 60%;	
+}
+
+
+
+.sidecamera {
+	float: right;
+	display: table-cell;
+	padding: 10px;
+	top: 180px;
+	right: 0px;
+	width: 40%;
+}
+
+.sideimages{
+	float: right;
+	border: 1px solid #ddd;
+    border-radius: 4px;
+	height: 50%;
+	width: 50%;
+}
+
+.mainimages{
+	vertical-align: middle;
+	border: 1px solid #ddd;
+    border-radius: 4px;
+	height: 100%;
+	width: 100%;
+}
+
+table{
+	width: 400%;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+th {
+    height: 50px;
+	border: 1px solid black;
+}
+
+tr, td{
+	border: 1px solid black;
+}
