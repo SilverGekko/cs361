@@ -44,9 +44,9 @@ for k=1:numel(files)
     bbox = step(detector,Images{k});
 	
     % Display result
-    % figure(k),clf
-    % imshow(Images{k})
-    % hold off
+    figure(k),clf
+    imshow(Images{k})
+    hold off
       
     %display bouding boxes
     for j = 1:size(bbox,1)
