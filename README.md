@@ -8,10 +8,6 @@ nodemailer
 
 mysql
 
-jsdom
-
-node-jsdom
-
 node-handlebars
 
 request

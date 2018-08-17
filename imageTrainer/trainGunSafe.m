@@ -44,14 +44,14 @@ for k=1:numel(files)
     bbox = step(detector,Images{k});
 	
     % Display result
-    % figure(k),clf
-    % imshow(Images{k})
-    % hold off
+    figure(k),clf
+    imshow(Images{k})
+    hold off
       
-    %display bouding boxes
-    % for j = 1:size(bbox,1)
-    %     rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
-    % end
+    % display bouding boxes
+    for j = 1:size(bbox,1)
+        rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
+    end
     
     % Save output files
     outFilename = sprintf('%s_%d.jpg','out_image',k); 
