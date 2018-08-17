@@ -52,7 +52,7 @@ app.get('/home', function (req, res) {
 	res.sendFile(path.join(__dirname + '/361page.html'));
 });
 
-app.get('/gunners', function (req, res) {
+app.get('/gunners', function (req, res, next) {
 	var context = {};
 
 	pool.query('SELECT * FROM Gunners', function (error, results, fields) {
