@@ -5,6 +5,7 @@ var handlebars = require('express-handlebars').create({ defaultLayout: 'main' })
 const bodyParser = require("body-parser")
 var request = require('request');
 const mysql = require('mysql');
+var exec = require('child_process').exec;
 var pool = mysql.createPool({
 	host: "classmysql.engr.oregonstate.edu",
 	user: "cs361_pugliesn",
@@ -159,6 +160,9 @@ app.post('/addGunner', function (req, res) {
 	res.redirect('back');
 });
 
+app.get('/checkguns', function (req, res) {
+	var run = check_guns_before(check_guns_after, compare_output, res);
+});
 
 
 function formatDate(date) {
@@ -178,5 +182,86 @@ function formatDate(date) {
 
 	return day + ' ' + monthNames[monthIndex] + ' ' + year + ' ' + hour + ':' + minute + ':' + seconds;
 }
+
+var exec = require('child_process').exec;
+
+function check_guns_before(callback1, callback2, res){
+	exec("cd ./imageTrainer; rm -f out_image*");
+    exec("ls ./imageTrainer", function(error, stdout, stderr){ callback1(stdout, callback2, res); });
+};
+
+function check_guns_after(old_stdout, callback, res){
+    exec("cd ./imageTrainer; run_matlab"); 
+	setTimeout(function() {
+    	exec("ls ./imageTrainer", function(error, stdout, stderr){ 
+			callback(old_stdout, stdout, res);	
+		});
+	}, 45000);
+};
+
+function compare_output(before, after, res) {
+	if (before == after) {
+		console.log("same");
+		res.sendFile(path.join(__dirname + '/noGuns.html'));
+	} else {
+		res.sendFile(path.join(__dirname + '/foundGuns.html'));
+		console.log("not same");
+	//var safezone = req.body.safezone;
+	//var priority = req.body.priority;
+	//var message = req.body.message;
+
+	var safezone = "Harvest Moon Farms";
+	var priority = 1;
+	var message = "Guns found in one or more pictures. Investigate further.";
+
+	if (message === "") {
+		message = "No additional information provided."
+	}
+
+	console.log("post received: %s %s", safezone, priority);
+
+	pool.query("SELECT * FROM SafeZone S JOIN Authorities A ON S.Authority = A.Name WHERE S.Name = \"" + safezone + "\"", function (error, results, fields) {
+		if (error) {
+			throw error;
+			return;
+		}
+		if (results == undefined || results.length == 0) {
+			console.log("No Results");
+			return;
+		}
+		console.log("Results: ", results);
+
+		var timestamp = formatDate(new Date())
+		var info = 'Priority ' + priority + ' Incident Report Generated at ' + safezone + ' at ' + timestamp;
+
+		var mailOptions = {
+			from: 'osugunsafe@gmail.com',
+			to: results[0].Email,
+			subject: info,
+			text: info + '\n\nReport: ' + message
+		};
+		transporter.sendMail(mailOptions, function (error, info) {
+			if (error) {
+				throw error;
+				return;
+			} else {
+				console.log('Email sent: ' + info.response);
+			}
+		});
+
+		pool.query("INSERT INTO IncidentReport (SafeZone, Date, Description, Priority) VALUES (\"" + safezone + "\",\"" + timestamp + "\",\"" + message + "\"," + priority + ")", function (error, results, fields) {
+			if (error) { throw error; return; }
+			console.log("Results: ", results)
+		});
+	});
+	//res.redirect('back');
+	}
+};
+
+function parse_data(data) {
+	console.log(data);
+};
+
+//check_guns_before(check_guns_after, compare_output);
 
 app.listen(55556);

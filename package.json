@@ -24,6 +24,7 @@
   "homepage": "https://github.com/SilverGekko/cs361#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "child_process": "^1.0.2",
     "contributor": "^0.1.25",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",

@@ -42,7 +42,6 @@ for k=1:numel(files)
 
     % find bounding boxes
     bbox = step(detector,Images{k});
-	
     % Display result
     figure(k),clf
     imshow(Images{k})
@@ -54,6 +53,9 @@ for k=1:numel(files)
     end
     
     % Save output files
-    outFilename = sprintf('%s_%d.jpg','out_image',k); 
-    saveas(figure(k), outFilename);
+	if isempty(bbox) == 0;
+		disp(bbox);
+    	outFilename = sprintf('%s_%d.jpg','out_image',k); 
+    	saveas(figure(k), outFilename);
+	end
 end
