@@ -48,7 +48,7 @@ for k=1:numel(files)
     imshow(Images{k})
     hold off
       
-    %display bouding boxes
+    % display bouding boxes
     for j = 1:size(bbox,1)
         rectangle('Position', bbox(j,:),'EdgeColor','r', 'LineWidth', 3)
     end
